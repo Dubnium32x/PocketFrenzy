@@ -1,0 +1,11 @@
+{
+  "code2emoji": true,
+  "suggester": true,
+  "disabledPacks": [
+    "luc",
+    "obs"
+  ],
+  "triggerWithTrailingSpace": false,
+  "spaceAfterSC": true,
+  "isMigrated": false
+}
