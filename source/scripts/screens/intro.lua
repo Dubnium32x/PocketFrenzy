@@ -42,6 +42,7 @@ function Intro:update()
 
     -- check if the intro animation is finished or if A or B is pressed
     if frame == totalFrames or buttonPressed then
+        frame = totalFrames
         -- load the title screen
         Intro:skipIntro()
     else
