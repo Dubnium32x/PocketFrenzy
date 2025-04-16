@@ -30,12 +30,12 @@ local buttonStack = {}
 class('InputHandler').extends()
 function InputHandler:init()
     -- Initialize the input handler
-    self.buttonState = 0000000
+    self.buttonState = 000000
 end
 
 -- Function to get the current button state as a binary number
-local function getButtonState()
-    local state = 0000000
+function InputHandler:getButtonState()
+    local state = 000000
     if pd.buttonIsPressed(buttonA) then state = state | 32 end
     if pd.buttonIsPressed(buttonB) then state = state | 16 end
     if pd.buttonIsPressed(buttonU) then state = state | 8 end
@@ -46,8 +46,8 @@ local function getButtonState()
 end
 
 -- Function to update the button stack
-local function updateButtonStack()
-    local currentState = getButtonState()
+function InputHandler:updateButtonStack()
+    local currentState = InputHandler:getButtonState()
     table.insert(buttonStack, currentState)
     -- Limit stack size to avoid memory issues
     if #buttonStack > 60 then
@@ -58,7 +58,7 @@ end
 -- Call updateButtonStack in the update loop
 function InputHandler:update()
     -- Update the button stack
-    updateButtonStack()
+    self.updateButtonStack()
 
     -- Check for button presses
     if pd.buttonJustPressed(buttonA) then
@@ -124,3 +124,5 @@ local function clearButtonStack()
         table.remove(buttonStack, 1)
     end
 end
+
+return InputHandler
